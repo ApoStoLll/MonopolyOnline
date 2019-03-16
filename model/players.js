@@ -1,4 +1,4 @@
-class player{
+class Player{
     constructor(number){
         this.money = 1500000;
         this.number = number;
@@ -11,7 +11,7 @@ class player{
     setPosition(position) {this.position = position; }
     getNumber() { return this.number; }
     setNumber(number) { this.number = number; }
-    random( max = 6 ){ return Math.floor(Math.random() * (max + 1)); }
+    random( max = 6 ) { return Math.floor(Math.random() * (max + 1)); }
     findCard(position){
         for(let i = 0; i < this.cards.lenght;i++){
            if (this.cards[i].getPosition === position) return this.cards[i];

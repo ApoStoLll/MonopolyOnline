@@ -1,4 +1,4 @@
-class card{
+class Card{
     constructor(position,price,priceRent,priceShop,color){
         this.position = position;
         this.price = price;
