@@ -21,3 +21,11 @@ server.listen(port, function() {
     console.log('Запускаю сервер на порте 3000');
 });
 
+io.on('connection', function(socket) {
+    socket.on('press', function(){
+        socket.emit("message", 'hi');
+    });
+});
+
+
+
