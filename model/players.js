@@ -13,8 +13,8 @@ class player{
     setNumber(number) { this.number = number; }
     random( max = 6 ){ return Math.floor(Math.random() * (max + 1)); }
     findCard(position){
-        for(let i = 0; i < 40;i++){
-           if (cards[i].getPosition === position) return this.cards[i];
+        for(let i = 0; i < this.cards.lenght;i++){
+           if (this.cards[i].getPosition === position) return this.cards[i];
         }
     }
     payRent(player){
@@ -25,6 +25,6 @@ class player{
     buyCard(card){
         card.setOwner(number);
         this.money = this.money - card.getPrice();
-        // + засунуть в массив карточе игрока
+        this.cards[this.cards.length] = card;
     }
 };
