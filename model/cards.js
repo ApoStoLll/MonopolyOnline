@@ -5,17 +5,17 @@ class card{
         this.priceRent = priceRent;
         this.priceShop = priceShop;
         this.color = color;
-        owner = -1;
-        countShop = 0;
+        this.owner = -1;
+        this.countShop = 0;
     }
-    getPosition() { return position; }
-    getPrice() { return price; }
-    getPriceRent() { return priceRent; }
-    getPriceShop() {return priceShop; }
-    getOwner() { return owner; }
+    getPosition() { return this.position; }
+    getPrice() { return this.price; }
+    getPriceRent() { return this.priceRent; }
+    getPriceShop() {return this.priceShop; }
+    getOwner() { return this.owner; }
     setOwner( owner ) { this.owner = owner; }
-    getColor() { return color; }
-    getCountShops() { return countShops; }
+    getColor() { return this.color; }
+    getCountShops() { return this.countShops; }
     setCountShops() { this.countShop = countShop; }
     getType() { return 1; }
 };

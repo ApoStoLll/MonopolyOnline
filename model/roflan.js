@@ -3,6 +3,6 @@ class roflan{
         this.position = position;
         this.type = type;
     }
-    getType() { return type; }
-    getPosition() { return position; }
+    getType() { return this.type; }
+    getPosition() { return this.position; }
 };
