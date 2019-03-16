@@ -11,11 +11,11 @@ class Card{
     getPosition() { return this.position; }
     getPrice() { return this.price; }
     getPriceRent() { return this.priceRent; }
-    getPriceShop() {return this.priceShop; }
+    getPriceShop() { return this.priceShop; }
     getOwner() { return this.owner; }
     setOwner( owner ) { this.owner = owner; }
     getColor() { return this.color; }
     getCountShops() { return this.countShops; }
     setCountShops() { this.countShop = countShop; }
-    getType() { return 1; }
+    getType() { return -1; }
 };
