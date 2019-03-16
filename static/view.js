@@ -1,44 +1,37 @@
 class View{
     constructor(canvas){
-        canvas.width = 800;
-        canvas.height = 800;
+        canvas.width = 880;
+        canvas.height = 880;
         this.context = canvas.getContext('2d');
         this.rects = [];
         this.width = 80;
         this.height = 80;
     }
     createMap(){
-        for(let i = 0; i < 11; i++) //GORIZONTAL(top);
-            this.rects[i] = new Rect(this.width * i, 0, this.width, this.height);
-        for(let i = 0; i < 9; i++) //VERTICAL(RIGHT);
-            this.rects[11 + i] = new Rect(800 - this.width, 80 + this.height * i, this.width, this.height);
         for(let i = 0; i < 11; i++) //GORIZONTAL(BOT);
-            this.rects[20 + i] = new Rect(800 - this.width * i - 80, 800 - this.height, this.width, this.height);
+            this.rects[i] = new Rect(880 - this.width * i - 80, 880 - this.height, this.width, this.height);
         for(let i = 0; i < 9; i++) //VERTICAL(LEFT);
-            this.rects[31 + i] = new Rect(0, 800 - this.height - 80 * i, this.width, this.height);
+            this.rects[11 + i] = new Rect(0, 880 - this.height * i - 160, this.width, this.height);
+        for(let i = 0; i < 11; i++) //GORIZONTAL(top);
+            this.rects[20 + i] = new Rect(this.width * i, 0, this.width, this.height);
+        for(let i = 0; i < 9; i++) //VERTICAL(RIGHT);
+            this.rects[31 + i] = new Rect(880 - this.width, 80 + this.height * i, this.width, this.height);
     }
     drawRects(){
-        /*this.rects.forEach(function(rect, i, rects){
-            rect.draw(this.context);
-        });*/
-        let count = 0;
-        this.context.fillStyle = "rgb(110, 0, 212)";
         for(let i = 0; i < this.rects.length; i++){
-            if(count === 2) this.context.fillStyle = "rgb(255, 133, 0)";
-            if(count === 4) this.context.fillStyle = "rgb(0, 134, 0)";
-            if(count === 6) this.context.fillStyle = "rgb(191, 0, 0)";
-            if(count === 8) this.context.fillStyle = "rgb(132, 132, 132)";
-            if(count === 10) this.context.fillStyle = "rgb(0, 115, 255)";
-            if(count === 12) this.context.fillStyle = "rgb(124, 70, 14)";
-            if(count === 14) this.context.fillStyle = "rgb(31, 31, 31)";
-            if(count === 16) this.context.fillStyle = "rgb(222, 14, 199)";
-            if(count === 18) this.context.fillStyle = "rgb(255, 133, 0)";
-            if(count === 20) this.context.fillStyle = "rgb(0, 134, 0)";
-            if(count === 22) this.context.fillStyle = "rgb(191, 0, 0)";
-            if(count === 24) this.context.fillStyle = "rgb(132, 132, 132)";
-            if(count === 26) this.context.fillStyle = "rgb(0, 115, 255)";
+            if( i % 10 == 0 ) this.context.fillStyle = "rgb(255, 248, 220)";
+            if (i == 2 || i == 4 || i == 8 || i == 12 || i == 17 || i == 23 || i == 27 || i == 32 || i == 36 || i == 38) 
+            this.context.fillStyle = "rgb(255, 255, 255)";
+            if( i == 1 || i == 3 ) this.context.fillStyle = "rgb(75, 0, 130)";
+            if( i % 10 == 5 ) this.context.fillStyle = "rgb(255, 140, 0)";
+            if ( i == 6 || i == 7 || i == 9) this.context.fillStyle = "rgb(0, 128, 0)";
+            if ( i == 11 || i == 13 || i == 14) this.context.fillStyle = "rgb(255, 0, 0)";
+            if ( i == 16 || i == 18 || i == 19) this.context.fillStyle = "rgb(192, 192, 192)";
+            if ( i == 21 || i == 22 || i == 24) this.context.fillStyle = "rgb(0, 0, 255)";
+            if ( i == 26 || i == 28 || i == 29) this.context.fillStyle = "rgb(139, 69, 19)";
+            if ( i == 31 || i == 33 || i == 34) this.context.fillStyle = "rgb(0, 0, 0)";
+            if ( i == 39 || i == 37) this.context.fillStyle = "rgb(255, 20, 147)";
             this.rects[i].draw(this.context);
-            count ++;
         }
     };
 }
