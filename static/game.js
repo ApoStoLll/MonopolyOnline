@@ -7,3 +7,8 @@ btn.onclick = function(){
         console.log(data);
     });
 };
+console.log('drawRects');
+let canvas = document.getElementById("canvas");
+let view = new View(canvas);
+view.createMap();
+view.drawRects();

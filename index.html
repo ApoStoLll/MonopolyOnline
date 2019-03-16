@@ -1,10 +1,20 @@
 <html>
   <head>
     <title>Monopoly</title>
+    <style>
+      canvas {
+        width: 700px;
+        height: 700px;
+        border: 5px solid black;
+      }
+      </style>
     <script src="/socket.io/socket.io.js?x66811"></script>
   </head>
   <body>
     <input type="button" name="step" value="step" id="btn" onclick="onClick()" />
+    <canvas id="canvas"></canvas>
   </body>
-  <script src="/game/game.js?x66811"></script>
+  <script src="/static/rect.js?"></script>
+  <script src="/static/view.js?"></script>
+  <script src="/static/game.js?"></script>
 </html>
