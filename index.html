@@ -7,12 +7,21 @@
         height: 700px;
         border: 5px solid black;
       }
+      #buyBtn{
+        position: absolute;
+        top: 400px;
+        left: 400px;
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+      }
       </style>
     <script src="/socket.io/socket.io.js?x66811"></script>
   </head>
   <body>
-    <input type="button" name="step" value="step" id="btn" onclick="onClick()" />
+    <input type="button" name="step" value="step" id="btn"  />
     <canvas id="canvas"></canvas>
+    <button type="button" id="buyBtn" onclick="buy()" >Buy</button>
   </body>
   <script src="/static/rect.js?"></script>
   <script src="/static/view.js?"></script>

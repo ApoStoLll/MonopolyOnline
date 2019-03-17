@@ -43,6 +43,12 @@ class View{
             this.rects[i].draw(this.context);
         }
     };
+    skipOrBuy(){
+        let buyBtn = document.getElementById("buyBtn");
+        buyBtn.getContext('2d');
+        //buyBtn.hidden = true;
+        buyBtn.style.display = "block";
+    }
 }
 
 
