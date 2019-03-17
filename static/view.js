@@ -44,13 +44,20 @@ class View{
         }
     };
     skipOrBuy(){
-        let buyBtn = document.getElementById("buyBtn");
-        buyBtn.getContext('2d');
-        //buyBtn.hidden = true;
-        buyBtn.style.display = "block";
+        document.getElementById("buyBtn").style.visibility = "visible";
+        document.getElementById("skipBtn").style.visibility = "visible";
     }
+};
+function buy(){
+    document.getElementById("buyBtn").style.visibility = "hidden";
+    document.getElementById("skipBtn").style.visibility = "hidden";
+    return 1;
 }
-
+function skip(){
+    document.getElementById("buyBtn").style.visibility = "hidden";
+    document.getElementById("skipBtn").style.visibility = "hidden";
+    return 0;
+}
 
 
 
