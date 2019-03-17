@@ -28,4 +28,3 @@ class Player{
         this.cards[this.cards.length] = card;
     }
 };
-module.exports = Player;

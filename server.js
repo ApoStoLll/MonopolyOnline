@@ -1,28 +1,27 @@
-let Player = require('./model/player.js');
-//let step = require('./controller/gameCycle')
-let express = require('express');
-let http = require('http');
-let path = require('path');
-let socketIO = require('socket.io');
-let app = express();
-let server = http.Server(app);
-let io = socketIO(server);
+const Game = require('./controller/gameController');
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const socketIO = require('socket.io');
+const app = express();
+const server = http.Server(app);
+const io = socketIO(server);
 
-let port = 3000;
-let players = [];
-let counter = 0;
+const port = 3000;
+let game = new Game(io);
 
-function gameCycle(socket){
-    
-}
 
 io.on('connection', (socket) => {
-    players[counter] = new Player(counter, socket.id);
-    counter++;
-    socket.on('disconect', () => {
-        counter--;
+    socket.on('new player', () => {
+        game.createPlayer(socket);
+        console.log(socket.id);
     });
-
+    socket.on('disconnect', () => {
+        game.removePlayer(socket);
+    });
+    if(game.counter > 1){
+        game.cycle();
+    }
 });
 
 app.set('port', port);
@@ -61,7 +60,6 @@ function setFirstAndSecond(){
     }
 }
 
-function random( max = 6 ) { return Math.floor(Math.random() * (max + 1)); }
 
 function step(player){
     let a = random();
