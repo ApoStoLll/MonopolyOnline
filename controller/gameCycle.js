@@ -1,4 +1,5 @@
-function random( max = 6 ) { return Math.floor(Math.random() * (max + 1)); }
+let Player = require('.');
+
 let numOfStep = 0;
 
 /*function gameCycle(players){
@@ -8,11 +9,7 @@ let numOfStep = 0;
     return 1;
 }*/
 
-function step(player){
-    let a = random();
-    let b = random();
-    player.setPosition(player.getPosition() + a + b);
-}
+
 
 module.exports = step;
 //ffgfgsg
