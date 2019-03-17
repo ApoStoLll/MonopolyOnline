@@ -55,6 +55,7 @@ io.on('connection', function(socket) {
             else step(players[second]);
             io.sockets.emit('position', posOfPlayers);
             step++;
+            console.log("step");
         }
         //if(gameCycle(players) == 1) io.sockets.emit('position', posOfPlayers);
     });
