@@ -1,5 +1,5 @@
 let Player = require('./model/player.js');
-let step = require('./controller/gameCycle')
+//let step = require('./controller/gameCycle')
 let express = require('express');
 let http = require('http');
 let path = require('path');
@@ -31,35 +31,54 @@ app.get('/', function(request, response) {
 server.listen(port, function() {
     console.log('Запускаю сервер на порте 3000');
 });
+
 let steps = 0;
+let i = 0;
+let first;
+let second;
+
+function setFirstAndSecond(){
+    for(let id in players){
+        //console.log('func' + id);
+        if(i == 0) first = id;
+        if(i == 1) second = id;
+        i++;
+    }
+}
+
+function random( max = 6 ) { return Math.floor(Math.random() * (max + 1)); }
+
+function step(player){
+    let a = random();
+    let b = random();
+    console.log('step: ' + player);
+    player.position = player.position() + a + b;
+}
+
+function gameCycle(socket){
+    console.log('PLAYERSgame: ' + JSON.stringify(players));
+    console.log('game, player.first ' + JSON.stringify(players[first]));
+    if(sizeOf(players) > 1){
+        if(step % 2 == 0) step(players.first);
+        else step(players.second);
+        io.sockets.emit('position', posOfPlayers);
+        step++;
+    }
+}
+
 io.on('connection', function(socket) {
     socket.on('press', function(){
-        socket.emit("message", socket.id);
+        gameCycle(socket);
     });
     socket.on('new player', () => {
         players[socket.id] = new Player(socket.id);
         let posOfPlayers = [];
         //for(let i = 0; i < players.length; i++) posOfPlayers[i] = players[i].getPosition();
-        let i = 0;
-        let first;
-        let second;
-        for(let id in players){
-            if(i == 0) first = id;
-            else second = id;
+        for(let id in players)
             posOfPlayers[i] = players[id].getPosition();
-            i++;
-        }
+        //console.log("Players: " + JSON.stringify(players));
+        //console.log("id" + JSON.stringify(players[socket.id]));
         io.sockets.emit('position', posOfPlayers);
-        if(sizeOf(players) > 1){
-            if(step % 2 == 0) step(players[first]);
-            else step(players[second]);
-            io.sockets.emit('position', posOfPlayers);
-            step++;
-            console.log("step");
-        }
-        //if(gameCycle(players) == 1) io.sockets.emit('position', posOfPlayers);
+        if(sizeOf(players) > 1) setFirstAndSecond();
     });
 });
-
-
-
