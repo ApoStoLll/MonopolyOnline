@@ -1,9 +1,10 @@
 class Player{
-    constructor(number){
+    constructor(number, id){
         this.money = 1500000;
         this.number = number;
         this.position = 0;
         this.cards = [];
+        this.id = id;
     }
     getMoney(){ return this.money; }
     setMoney(money){ this.money = money; }

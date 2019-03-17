@@ -9,15 +9,21 @@ let server = http.Server(app);
 let io = socketIO(server);
 
 let port = 3000;
-let players = {};
+let players = [];
+let counter = 0;
 
-function sizeOf(arr){
-    var counter = 0;
-    for (var key in arr) {
-        counter++;
-    }
-    return counter;
+function gameCycle(socket){
+    
 }
+
+io.on('connection', (socket) => {
+    players[counter] = new Player(counter, socket.id);
+    counter++;
+    socket.on('disconect', () => {
+        counter--;
+    });
+
+});
 
 app.set('port', port);
 app.use('/static', express.static(__dirname + '/static'));
@@ -32,10 +38,19 @@ server.listen(port, function() {
     console.log('Запускаю сервер на порте 3000');
 });
 
-let steps = 0;
+
+/*let steps = 0;
 let i = 0;
 let first;
 let second;
+
+function sizeOf(arr){
+    var counter = 0;
+    for (var key in arr) {
+        counter++;
+    }
+    return counter;
+}
 
 function setFirstAndSecond(){
     for(let id in players){
@@ -71,7 +86,8 @@ io.on('connection', function(socket) {
         gameCycle(socket);
     });
     socket.on('new player', () => {
-        players[socket.id] = new Player(socket.id);
+
+        /*players[socket.id] = new Player(socket.id);
         let posOfPlayers = [];
         //for(let i = 0; i < players.length; i++) posOfPlayers[i] = players[i].getPosition();
         for(let id in players)
@@ -81,4 +97,4 @@ io.on('connection', function(socket) {
         io.sockets.emit('position', posOfPlayers);
         if(sizeOf(players) > 1) setFirstAndSecond();
     });
-});
+});*/
