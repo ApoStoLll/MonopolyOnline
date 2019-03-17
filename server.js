@@ -12,16 +12,20 @@ let game = new Game(io);
 
 
 io.on('connection', (socket) => {
+   // console.log(io);
     socket.on('new player', () => {
         game.createPlayer(socket);
-        console.log(socket.id);
+        console.log('connect');
+        console.log(game.counter);
+        if(game.counter > 1){
+            game.cycle(socket);
+        }
     });
     socket.on('disconnect', () => {
         game.removePlayer(socket);
+        console.log('disconnect');
     });
-    if(game.counter > 1){
-        game.cycle();
-    }
+
 });
 
 app.set('port', port);
