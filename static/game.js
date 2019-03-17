@@ -22,4 +22,5 @@ let view = new View(canvas);
 view.createMap();
 view.drawRects();
 view.skipOrBuy();
+view.menu();
 socket.emit('new player');
