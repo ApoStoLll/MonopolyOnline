@@ -8,5 +8,6 @@ class Rect{
     draw(ctx){
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    
+    getX() { return this.x; }
+    getY() { return this.y; }
 }

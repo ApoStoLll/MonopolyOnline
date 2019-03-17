@@ -7,6 +7,15 @@ class View{
         this.width = 80;
         this.height = 80;
     }
+    drawPlayers(players){
+        this.context.fillStyle = "rgb(255, 255, 255)";
+        console.log(players.length);
+        for(let i = 0; i < players.length; i++){
+            let rect = this.rects[players[i]];
+            console.log("pos: " + players[i]);
+            new Rect(rect.getX() + 10, rect.getY() + 10, 40, 40).draw(this.context);
+        }
+    }
     createMap(){
         for(let i = 0; i < 11; i++) //GORIZONTAL(BOT);
             this.rects[i] = new Rect(880 - this.width * i - 80, 880 - this.height, this.width, this.height);

@@ -11,7 +11,6 @@ class Player{
     setPosition(position) {this.position = position; }
     getNumber() { return this.number; }
     setNumber(number) { this.number = number; }
-    random( max = 6 ) { return Math.floor(Math.random() * (max + 1)); }
     findCard(position){
         for(let i = 0; i < this.cards.lenght;i++){
            if (this.cards[i].getPosition === position) return this.cards[i];
@@ -28,3 +27,4 @@ class Player{
         this.cards[this.cards.length] = card;
     }
 };
+module.exports = Player;

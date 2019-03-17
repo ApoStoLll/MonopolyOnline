@@ -19,3 +19,4 @@ class Card{
     setCountShops() { this.countShop = countShop; }
     getType() { return -1; }
 };
+module.exports = Card;
