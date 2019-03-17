@@ -41,10 +41,33 @@ class View{
             if ( i == 31 || i == 33 || i == 34) this.context.fillStyle = "rgb(0, 0, 0)";
             if ( i == 39 || i == 37) this.context.fillStyle = "rgb(255, 20, 147)";
             this.rects[i].draw(this.context);
+            document.getElementById("buyBtn").style.visibility = "hidden";
+            document.getElementById("skipBtn").style.visibility = "hidden";
+            document.getElementById("finishBtn").style.visibility = "hidden";
         }
     };
+    skipOrBuy(){
+        document.getElementById("buyBtn").style.visibility = "visible";
+        document.getElementById("skipBtn").style.visibility = "visible";
+    }
+    menu(){
+        document.getElementById("finishBtn").style.visibility = "visible";
+    }
+};
+function buy(){
+    document.getElementById("buyBtn").style.visibility = "hidden";
+    document.getElementById("skipBtn").style.visibility = "hidden";
+    return 1;
 }
-
+function skip(){
+    document.getElementById("buyBtn").style.visibility = "hidden";
+    document.getElementById("skipBtn").style.visibility = "hidden";
+    return 0;
+}
+function finish(){
+    document.getElementById("finishBtn").style.visibility = "hidden";
+    return 0;
+}
 
 
 

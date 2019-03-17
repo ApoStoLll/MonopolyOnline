@@ -1,18 +1,15 @@
 <html>
   <head>
     <title>Monopoly</title>
-    <style>
-      canvas {
-        width: 700px;
-        height: 700px;
-        border: 5px solid black;
-      }
-      </style>
     <script src="/socket.io/socket.io.js?x66811"></script>
+    <link  rel="stylesheet" href="/static/stylesheet.css"  >
   </head>
   <body>
-    <input type="button" name="step" value="step" id="btn" onclick="onClick()" />
+    <input type="button" name="step" value="step" id="btn"  />
     <canvas id="canvas"></canvas>
+    <button type="button" id="buyBtn" onclick="buy()" >Buy</button>
+    <button type="button" id="skipBtn" onclick="skip()" >Skip</button>
+    <button type="button" id="finishBtn" onclick="finish()" >Finish</button>
   </body>
   <script src="/static/rect.js?"></script>
   <script src="/static/view.js?"></script>
